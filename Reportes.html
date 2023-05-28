@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Reportes</title>
+    <link rel="stylesheet" href="css/no_gif2.css">
+    <link href="css/reportes.css" rel="stylesheet" />
+    <style>
+        body {
+            background-image: url('../GOB-master/IMG/Inicio.jpg');
+            background-size: cover;
+            background-position: left top;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contenedor">
+        <nav class="nav">
+            <ul class="list">
+                <li class="list__item">
+                    <div class="list__button">
+                        <img src="assets/dashboard.svg" class="list__img">
+                        <a href="INICIO.html" class="nav__link">Inicio</a>
+                    </div>
+                </li>
+
+              
+
+                <li class="list__item">
+                    <div class="list__button">
+                        <img src="assets/stats.svg" class="list__img">
+                        <a href="Subir_Archivo.html" class="nav__link">Carga Archivos</a>
+                    </div>
+                </li>
+
+                <li class="list__item">
+                    <div class="list__button">
+                        <img src="assets/message.svg" class="list__img">
+                        <a href="CONTACTO.html" class="nav__link">Contacto</a>
+                    </div>
+                </li>
+
+                <li class="list__item">
+                    <div class="list__button">
+                        <img src="assets/message.svg" class="list__img">
+                        <a href="Reportes.html" class="nav__link">Reportes</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="sub_cont">
+        <div class="sub">
+            <center>
+                <h1>Reportes</h1>
+            </center>
+
+            <!-- Lista desplegable para la selección de departamentos -->
+            <form >
+                <label for="department">Seleccione el departamento:</label>
+                <select name="department" id="department" onchange="updateOptions()">
+                    <option value="department1">A. RECURSOS FINANCIEROS</option>
+                    <option value="department2">B. RECURSOS HUMANOS</option>
+                    <option value="department3">C. RECURSOS MATERIALES</option>
+                    <option value="department4">D. OBRAS Y PROYECTOS</option>
+                    <option value="department5">E. ASUNTOS JURIDICOS</option>
+                    <option value="department6">F. ASUNTOS GENERALES</option>
+                    <option value="department7">NUMEROS ROMANOS</option>
+                </select>
+            </form>
+
+            <!-- Lista desplegable para la selección de documentos -->
+            <form>
+                <label for="document">Seleccione el documento:</label>
+                <select name="document" id="document">
+                </select>
+            </form>
+
+            <!-- Botón de descarga -->
+            <button class="download-button" onclick="downloadDocument()">Descargar</button>
+
+            <script>
+                var department1Options = [
+                    { name: "A. ANEXOS RECURSOS FINANCIEROS", value: "A. ANEXOS RECURSOS FINANCIEROS" },
+                    { name: "A.1 Presupuesto Global", value: "A.1 Presupuesto Global" },
+                    { name: "A.1 Presupuesto Global_95", value: "tA.1 Presupuesto Global_95" },
+                    { name: "A.1.1 Presupuesto de Ingresos Autorizado Global por Capitulo", value: "A.1.1 Presupuesto de Ingresos Autorizado Global por Capitulo4" },
+                    { name: "A.1.2 Presupuesto de Egresos Autorizado Global por Capitulo", value: "A.1.2 Presupuesto de Egresos Autorizado Global por Capitulo" },
+                    { name: "A.1.3 Presupuesto de Egresos por Secretaría Global", value: "A.1.3 Presupuesto de Egresos por Secretaría Global" },
+                    { name: "A.1.4 Presupuesto de Egresos Por Secretaría", value: "A.1.4 Presupuesto de Egresos Por Secretaría" },
+                    { name: "A.2 Reporte de Presupuesto Operativo", value: "A.2 Reporte de Presupuesto Operativo" },
+                    { name: "A.3 Estados Financieros", value: "A.3 Estados Financieros" },
+                    { name: "A.4 Asignación del Fondo Unico de Operación", value: "A.4 Asignación del Fondo Unico de Operación" },
+                    { name: "A.4.1a Arqueo del Fondo Único de Operación", value: "A.4.1a Arqueo del Fondo Único de Operación" },
+                    { name: "A.4.1b Arqueo del Fondo Único de Operación", value: "A.4.1b Arqueo del Fondo Único de Operación" },
+                    { name: "A.5 Rel. de Ctas. Bancarias, Inversiones, etc.", value: "A.5 Rel. de Ctas. Bancarias, Inversiones, etc." },
+                    { name: "A.5.1. Detalle de las Cuentas de Cheques", value: "A.5.1. Detalle de las Cuentas de Cheques" },
+                    { name: "A.5.1.. Detalle de las Cuentas de Cheques", value: "A.5.1.. Detalle de las Cuentas de Cheques" },
+                    { name: "A.5.1.1 Conciliación de Cuentas de Cheques", value: "A.5.1.1 Conciliación de Cuentas de Cheques" },
+                    { name: "A.5.1a Detalle de las Cuentas de Cheques", value: "A.5.1a Detalle de las Cuentas de Cheques" },
+                    { name: "A.5.1b Detalle de las Cuentas de Cheques", value: "A.5.1b Detalle de las Cuentas de Cheques" },
+                    { name: "A.5.2 Detalle de las Cuentas de Inversión", value: "A.5.2 Detalle de las Cuentas de Inversión" },
+                    { name: "A.5.2.1 Conciliación de Cuentas de Inversión", value: "A.5.2.1 Conciliación de Cuentas de Inversión" },
+                    { name: "A.6  Rel. de Ctas. x Cobrar", value: "A.6  Rel. de Ctas. x Cobrar" },
+                    { name: "A.6.2 Reporte de Saldos del Sistema de Ingresos", value: "A.6.2 Reporte de Saldos del Sistema de Ingresos" },
+                    { name: "A.7 Rel. de cuentas x Pagar", value: "A.7 Rel. de cuentas x Pagar" },
+                    { name: "A.7.1 Relación de Saldos con Proveedores y Contratistas", value: "A.7.1 Relación de Saldos con Proveedores y Contratistas" },
+                    { name: "A.7.2 Relación de Saldos con Acreedores Diversos", value: "A.7.2 Relación de Saldos con Acreedores Diversos" },
+                    { name: "A.7.3 Rel. de documentos x Pagar", value: "A.7.3 Rel. de documentos x Pagar" },
+                    { name: "A.8 Rel. de Cheques Pendientes de Entregar", value: "A.8 Rel. de Cheques Pendientes de Entregar" },
+                    { name: "A.9 Rel. Pol. de Fianza que Garantizan un Crédito Fiscal", value: "A.9 Rel. Pol. de Fianza que Garantizan un Crédito Fiscal" },
+                    { name: "A.10 Estado que guarda la cuenta pública", value: "A.10 Estado que guarda la cuenta pública" },
+
+
+                ];
+
+                var department2Options = [
+                    { name: "B. ANEXOS RECURSOS HUMANOS", value: "B. ANEXOS RECURSOS HUMANOS" },
+                    { name: "B.1 Relación de Personal de Base, Por Honorarios Asimilables", value: "B.1 Relación de Personal de Base, Por Honorarios Asimilables" },
+                    { name: "B.2 Relación de Personal con Licencia, Permiso, Comisión, In", value: "B.2 Relación de Personal con Licencia, Permiso, Comisión, In" },
+                    { name: "B.3 Relación de Turnos y Cantidad de Personas Asignadas", value: "B.3 Relación de Turnos y Cantidad de Personas Asignadas" },
+                    { name: "B.4  Relación de Personal Jubilado y Pensionado", value: "B.4  Relación de Personal Jubilado y Pensionado" }
+            
+                ];
+
+                var department3Options = [
+                    { name: "C. ANEXOS RECURSOS MATERIALES", value: "C. ANEXOS RECURSOS MATERIALES" },
+                    { name: "C.1, Equipo, Herramienta y Accesorios y-o Listado de Patrimo", value: "C.1, Equipo, Herramienta y Accesorios y-o Listado de Patrimo" },
+                    { name: "C.1.5  Relación de Bienes Intangibles", value: "C.1.5  Relación de Bienes Intangibles" },
+                    { name: "C.2 Relación de Equipo de Transporte, Maquinaria y Combustible", value: "C.2 Relación de Equipo de Transporte, Maquinaria y Combustible" },
+                    { name: "C.3 Relación de Leyes, Reglamentos, Manuales, Libros y Publicaciones", value: "C.3 Relación de Leyes, Reglamentos, Manuales, Libros y Publicaciones" },
+                    { name: "C.3.1 Relación de Manuales de Organización y Proceso", value: "C.3.1 Relación de Manuales de Organización y Proceso" },
+                    { name: "C.4  Relación de Papelería Oficial en Stock", value: "C.4  Relación de Papelería Oficial en Stock" },
+                    { name: "C.5  Inventario de Almacenes", value: "C.5  Inventario de Almacenes" },
+                    { name: "C.6 Relación de Bienes Muebles Propiedad de Terceros", value: "C.6 Relación de Bienes Muebles Propiedad de Terceros" },
+                    { name: "C.7 Relación de Armamento Municipal y del Estado", value: "C.7 Relación de Armamento Municipal y del Estado" },
+                    { name: "C.8 Relación de Cd's y Cassettes de Audio y Video", value: "C.8 Relación de Cd's y Cassettes de Audio y Video" },
+                    { name: "C.9 Relación de Libros Propiedad del Gobierno del Estado", value: "C.9 Relación de Libros Propiedad del Gobierno del Estado" },
+                    { name: "C.10  Relación de Equinos y Caninos", value: "C.10  Relación de Equinos y Caninos" },
+                    { name: "C.11 Relación de Bienes Inmuebles  Propiedad del Municipio en tramite de incorporacion", value: "C.11 Relación de Bienes Inmuebles  Propiedad del Municipio en tramite de incorporacion" },
+                    { name: "C.11.1 Relación de Bienes Inmuebles  del Municipio Acreditados yo Incorporados", value: "C.11.1 Relación de Bienes Inmuebles  del Municipio Acreditados yo Incorporados" },
+                    { name: "C.11.2 Relación de Bienes Inmuebles en Comodato", value: "C.11.2 Relación de Bienes Inmuebles en Comodato" }
+                   
+                ];
+
+                var department4Options = [
+                    { name: "D. ANEXOS OBRAS Y PROYECYOS", value: "D. ANEXOS OBRAS Y PROYECYOS" },
+                    { name: "D.1  Padrón de Proveedores y Contratistas", value: "D.1  Padrón de Proveedores y Contratistas" },
+                    { name: "D.2  Relación de Obras Terminadas y en Proceso", value: "D.2  Relación de Obras Terminadas y en Proceso" },
+                    { name: "D.3  Relación de Programas", value: "D.3  Relación de Programas" },
+                    { name: "D.4 Relación de Contratos Financiados con Recursos Estatales", value: "D.4 Relación de Contratos Financiados con Recursos Estatales" },
+                    { name: "D.5 Relación de Contratos Financiados con Recursos Federales", value: "D.5 Relación de Contratos Financiados con Recursos Federales" },
+                    { name: "D.6 Relación de Contratos Financiados con Recursos Propios", value: "D.6 Relación de Contratos Financiados con Recursos Propios" },
+                    { name: "D.7  Expedientes de Obras y Ubicación", value: "D.7  Expedientes de Obras y Ubicación" },
+                    { name: "D.8  Relación de Comites de Obra Pública Formados", value: "D.8  Relación de Comites de Obra Pública Formados" }
+                ];
+
+                var department5Options = [
+                    { name: "E. ANEXOS  ASUNTOS JURIDICOS", value: "E. ANEXOS  ASUNTOS JURIDICOS" },
+                    { name: "E.1 Relación de Amparos, Juicios Contenciosos, Asuntos Penal", value: "E.1 Relación de Amparos, Juicios Contenciosos, Asuntos Penal" },
+                    { name: "E.2  Acuerdos, Contratos y Convenios Vigentes", value: "E.2  Acuerdos, Contratos y Convenios Vigentes" },
+                    { name: "E.3 Consejos, Comités, Fideicomisos, Patronatos, Asociacione", value: "E.3 Consejos, Comités, Fideicomisos, Patronatos, Asociacione" },
+                    { name: "E.4  Relación de Delegados Municipales", value: "E.4  Relación de Delegados Municipales" },
+                    { name: "E.5 BienesEmbargadosDecomisados", value: "E.5 BienesEmbargadosDecomisados" },
+                    { name: "E.6 Relación de Inmuebles Desafectados", value: "E.6 Relación de Inmuebles Desafectados" },
+                    { name: "E.7 Rel. de Regularización de Colonias", value: "E.7 Rel. de Regularización de Colonias" },
+                    { name: "E.8  Relación de Actas de Cabildo y Ubicación", value: "E.8  Relación de Actas de Cabildo y Ubicación" },
+                    { name: "E.9  Informe y Documentación Relativa a los Asuntos en Trámite de las Comisiones del Ayuntamiento", value: "E.9  Informe y Documentación Relativa a los Asuntos en Trámite de las Comisiones del Ayuntamiento" },
+                    { name: "E.10 Beneficiados de los Prograsmas Federales y Estatales", value: "E.10 Beneficiados de los Prograsmas Federales y Estatales" },
+                ];
+
+                var department6Options = [
+                    { name: "F. ANEXOS ASUNTOS GENERALES", value: "F. ANEXOS ASUNTOS GENERALES" },
+                    { name: "F.1  Relación de Papelería oficial en uso y en archivo muerto", value: "F.1  Relación de Papelería oficial en uso y en archivo muerto" },
+                    { name: "F.1.1  Relación de Expedientes y Actas en Archivo", value: "F.1.1  Relación de Expedientes y Actas en Archivo" },
+                    { name: "F.2  Archivo de Planos", value: "F.2  Archivo de Planos" },
+                    { name: "F.3  Relación de Asuntos en Trámite y ProyectosTipo F", value: "F.3  Relación de Asuntos en Trámite y Proyectos" },
+                    { name: "F.4 Relación de Sellos Autorizados", value: "F.4 Relación de Sellos Autorizados" }
+
+                ];
+
+                var department7Options = [
+                    { name: "0 NUMEROS ROMANOS", value: "0 NUMEROS ROMANOS" },
+                    { name: "I. Informe de Actividades", value: "I. Informe de Actividades" },
+                    { name: "II. Organigrama", value: "II. Organigrama" },
+                    { name: "III Funciones Generales", value: "III Funciones Generales" },
+                    { name: "IV. Relación de Anexos Aplicables", value: "IV. Relación de Anexos Aplicables" },
+                    { name: "V. Plan Municipal de DesarrolloTipo III", value: "V. Plan Municipal de Desarrollo" }
+                ];
+
+                function updateOptions() {
+                    var department = document.getElementById("department").value;
+                    var documentType = document.getElementById("document");
+
+                    // Borrar opciones existentes
+                    documentType.innerHTML = "";
+
+                  // Agregar nuevas opciones segun la selección del departamento
+                    var options;
+                    if (department === "department1") {
+                        options = department1Options;
+                    } else if (department === "department2") {
+                        options = department2Options;
+                    } else if (department === "department3") {
+                        options = department3Options;
+                    } else if (department === "department4") {
+                        options = department4Options;
+                    } else if (department === "department5") {
+                        options = department5Options;
+                    } else if (department === "department6") {
+                        options = department6Options;
+                    } else if (department === "department7") {
+                        options = department7Options;
+                    }
+
+                    // Agregar opciones a la lista desplegable
+                    for (var i = 0; i < options.length; i++) {
+                        var option = document.createElement("option");
+                        option.value = options[i].value;
+                        option.text = options[i].name;
+                        documentType.appendChild(option);
+                    }
+                }
+
+                function downloadDocument() {
+                    var selectedDocument = document.getElementById("document").value;
+                    
+                }
+
+                updateOptions();
+            </script>
+
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+
+
+
+</html>
